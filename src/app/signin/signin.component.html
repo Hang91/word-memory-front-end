@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control" type="email" name="email" [ngModel]="signIn.email" required email #email="ngModel">
+          <small class="alert alert-danger" [hidden]="email.valid || (email.pristine && !f.submitted)">
+            Email is required and format should be <i>john@doe.com</i>.
+          </small>          
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" name="password" [ngModel]="signIn.password" required #password="ngModel">        
+        </div>
+        <div class="form-group">
+          <small class="alert alert-danger" [hidden]="signInSuccess">
+            Unable to sign in with provided credentials. 
+          </small> 
+        </div>
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid">Sign in</button>
+
+      </form>
+    </div>
+  </div>
+</div>
