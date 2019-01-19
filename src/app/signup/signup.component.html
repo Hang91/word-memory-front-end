@@ -26,31 +26,45 @@
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" [ngModel]="registration.email" 
                 required email #email="ngModel" >
+          </div>
+
+          <div>
             <small class="alert alert-danger" [hidden]="email.valid || (email.pristine && !f.submitted)">
                 Email is required and format should be <i>john@doe.com</i>.
-            </small>
+            </small>            
           </div>
+
+          <br>
+
           <div class="form-group">
             <label for="password">Password</label>
             <input class="form-control" type="password" name="password" [ngModel]="registration.password" 
                 required minlength="8" #password="ngModel">
-            <small [hidden]="password.valid || (password.pristine && !f.submitted)">
-              <div class="alert alert-danger" *ngIf="password.errors?.required">
-                Password is required.
-              </div>
-              <div class="alert alert-danger" *ngIf="password.errors?.minlength">
-                Password must be at least 8 characters long.
-              </div>
+          </div>
+          <div [hidden]="password.valid || (password.pristine && !f.submitted)">
+            <small class="alert alert-danger" *ngIf="password.errors?.required">
+              Password is required.
+            </small>  
+            <small class="alert alert-danger" *ngIf="password.errors?.minlength">
+              Password must be at least 8 characters long.
             </small>
           </div>
+
+          <br>
+
           <div class="form-group">
             <label for="confirmPassword">Confirm password</label>
             <input class="form-control" type="password" name="confirmPassword" [ngModel]="registration.confirmPassword" 
-                required validateEqual="password" #confirmPassword="ngModel">
+                required validateEqual="password" #confirmPassword="ngModel">          
+          </div>
+          <div>
             <small class="alert alert-danger" [hidden]="confirmPassword.valid ||  (confirmPassword.pristine && !f.submitted)">
                 Password mismatch.
-            </small>            
+            </small>
           </div>
+
+          <br>
+          
           <button class="btn btn-success" type="submit" [disabled]="!f.valid">Register</button>
         </form>
       </div>

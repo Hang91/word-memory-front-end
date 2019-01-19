@@ -1,3 +1,12 @@
-<p>
-  search works!
-</p>
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="onSubmit(spell)">
+    <div class="row">
+      <div class="col-md-10">
+        <input class="form-control" type="text" name="spell" [(ngModel)]="spell" required>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success" type="submit">Search</button>
+      </div>
+    </div>  
+  </form>
+</div>
